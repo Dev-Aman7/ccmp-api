@@ -47,7 +47,12 @@ app.use(
 		],
 	}),
 );
-
+app.get('/', (req, res) => {
+	res.json({
+		status: 'Healthy',
+		message: 'Hey Dev! How are you doing. I am good here.',
+	});
+});
 app.use('/auth', auth);
 app.use('/swagger', swaggerDocs);
 app.use('/hr', hr);
