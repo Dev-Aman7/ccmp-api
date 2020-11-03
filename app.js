@@ -19,35 +19,35 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(
-	jwt({
-		secret: process.env.SECRET,
-		algorithms: ['HS256'],
-		credentialsRequired: true,
-		getToken: function fromHeaderOrQuerystring(req) {
-			// console.log(req.headers);
-			if (
-				req.headers.authorization &&
-				req.headers.authorization.split(' ')[0] === 'Bearer'
-			) {
-				return req.headers.authorization.split(' ')[1];
-			}
-			if (req.query && req.query.token) {
-				return req.query.token;
-			}
-			// console.log("in else", req.originalUrl);
-			return null;
-		},
-	}).unless({
-		path: [
-			'/',
-			'/auth/signin',
-			'/auth/signup',
-			'/auth/password/forgot',
-			'/auth/password/reset',
-		],
-	}),
-);
+// app.use(
+// 	jwt({
+// 		secret: process.env.SECRET,
+// 		algorithms: ['HS256'],
+// 		credentialsRequired: true,
+// 		getToken: function fromHeaderOrQuerystring(req) {
+// 			// console.log(req.headers);
+// 			if (
+// 				req.headers.authorization &&
+// 				req.headers.authorization.split(' ')[0] === 'Bearer'
+// 			) {
+// 				return req.headers.authorization.split(' ')[1];
+// 			}
+// 			if (req.query && req.query.token) {
+// 				return req.query.token;
+// 			}
+// 			// console.log("in else", req.originalUrl);
+// 			return null;
+// 		},
+// 	}).unless({
+// 		path: [
+// 			'/',
+// 			'/auth/signin',
+// 			'/auth/signup',
+// 			'/auth/password/forgot',
+// 			'/auth/password/reset',
+// 		],
+// 	}),
+// );
 app.get('/', (req, res) => {
 	res.json({
 		status: 'Healthy',

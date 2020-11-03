@@ -1,4 +1,3 @@
-const tariff = require('../../schemas/tariff');
 const Tariff = require('../../schemas/tariff');
 
 const create = (planName, type, tariff, rental, duration) => {
