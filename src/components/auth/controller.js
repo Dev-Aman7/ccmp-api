@@ -8,8 +8,8 @@ const signUp = async (name, email, address, contact, userType) => {
 	return userController.create(name, email, address, contact, userType);
 };
 
-const signIn = (email, password) => {
-	return User.findOne({ email: email }).then((result) => {
+const signIn = (registrationId, password) => {
+	return User.findOne({ registrationId: registrationId }).then((result) => {
 		if (!result) {
 			return {
 				status: false,
@@ -32,7 +32,7 @@ const signIn = (email, password) => {
 			} else {
 				return {
 					status: false,
-					message: 'Wrong email id or password',
+					message: 'Wrong registration id or password',
 				};
 			}
 		}

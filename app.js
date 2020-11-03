@@ -8,6 +8,8 @@ require('./src/components/db/setup').connect();
 
 const swaggerDocs = require('./src/docs/index');
 const auth = require('./src/components/auth');
+const hr = require('./src/components/HR');
+const user = require('./src/components/user');
 
 const app = express();
 
@@ -19,7 +21,7 @@ app.use(cookieParser());
 app.use(
 	jwt({
 		secret: process.env.SECRET,
-		algorithms: ['RS256'],
+		algorithms: ['HS256'],
 		credentialsRequired: true,
 		getToken: function fromHeaderOrQuerystring(req) {
 			// console.log(req.headers);
@@ -47,7 +49,8 @@ app.use(
 
 app.use('/auth', auth);
 app.use('/swagger', swaggerDocs);
-
+app.use('/hr', hr);
+app.use('/user', user);
 // error handler
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

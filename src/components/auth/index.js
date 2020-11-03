@@ -29,9 +29,9 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/signin', (req, res) => {
-	const { email, password } = req.body;
+	const { registrationId, password } = req.body;
 	controller
-		.signIn(email, password)
+		.signIn(registrationId, password)
 		.then((result) => {
 			res.status(200).json(result);
 		})
