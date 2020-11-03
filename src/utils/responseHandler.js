@@ -13,20 +13,19 @@ const err500 = (res, err) => {
 	});
 };
 
-const add = (res, id, msg) => {
+const add = (res, data, msg) => {
 	return res.status(201).json({
 		status: true,
 		message: `Successfully added ${msg}`,
-		data: {
-			_id: id,
-		},
+		data: data,
 	});
 };
 
-const update = (res, msg) => {
+const update = (res, data, msg) => {
 	return res.status(200).json({
 		status: true,
 		message: `Successfully updated ${msg}`,
+		data,
 	});
 };
 
@@ -51,4 +50,4 @@ const nodata = (res, msg) => {
 		message: `No ${msg} Found`,
 	});
 };
-export { err500, update, add, remove, get, nodata };
+module.exports = { err500, update, add, remove, get, nodata };

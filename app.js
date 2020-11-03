@@ -10,6 +10,7 @@ const swaggerDocs = require('./src/docs/index');
 const auth = require('./src/components/auth');
 const hr = require('./src/components/HR');
 const user = require('./src/components/user');
+const tariff = require('./src/components/tariff');
 
 const app = express();
 
@@ -51,6 +52,7 @@ app.use('/auth', auth);
 app.use('/swagger', swaggerDocs);
 app.use('/hr', hr);
 app.use('/user', user);
+app.use('/tariff', tariff);
 // error handler
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
