@@ -40,6 +40,7 @@ app.use(
 		},
 	}).unless({
 		path: [
+			'/',
 			'/auth/signin',
 			'/auth/signup',
 			'/auth/password/forgot',
