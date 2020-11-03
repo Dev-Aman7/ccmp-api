@@ -25,6 +25,7 @@ const update = (id, data) => {
 };
 
 const remove = (planId) => {
+	console.log(planId);
 	return Tariff.findByIdAndDelete(planId);
 };
 
