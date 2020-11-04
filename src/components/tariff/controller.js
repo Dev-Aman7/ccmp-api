@@ -1,4 +1,5 @@
 const Tariff = require('../../schemas/tariff');
+const User = require('../../schemas/tariff');
 
 const create = (planName, type, tariff, rental, duration) => {
 	const data = new Tariff({

@@ -55,8 +55,35 @@ const changePassword = async (old, newPass, id) => {
 	}
 };
 
+const subscribe = (userId, planId) => {
+	console.log('subscribe', userId, planId);
+	return User.findByIdAndUpdate(
+		userId,
+		{ $addToSet: { subscriptions: { planId, date: Date.now() } } },
+		{ new: true },
+	);
+};
+
+const unsubscribe = (userId, planId) => {
+	return User.findByIdAndUpdate(
+		userId,
+		{
+			$pull: { subscriptions: { planId } },
+		},
+		{ new: true },
+	);
+};
+
+const fetchSubscriptions = (userId) => {
+	console.log(' I came');
+	return User.findById(userId).populate('subscriptions.planId');
+};
+
 module.exports = {
 	create,
 	remove,
 	changePassword,
+	subscribe,
+	unsubscribe,
+	fetchSubscriptions,
 };
